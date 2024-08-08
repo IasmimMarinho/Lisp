@@ -1,0 +1,39 @@
+; car e first retornam a cabeça da lista (primeiro elemento)
+; cdr e rest retornam a cauda da lista (resto)
+; cons retorna uma lista que é a concatenação de uma cabeça com uma cauda (pode ser usado para reconstruir uma lista)
+; append concatena
+; list? verifica se é uma lista
+; length retorna o tamanho da lista
+; reverse inverte uma lista
+; (eq? a1 a2) - verdadeiro se “a1” e “a2” forem dois átomos iguais
+; (equal? se1 se2) – verdadeiro se “se1” e “se2” forem S-expr iguais
+; define para definição
+; (cond
+;   [cond1 expr1]
+;   ...
+;   [else default_expr])
+;
+; (if cond
+;   expr_then
+;   expr_else)
+
+; soma dois números
+(define (soma l)
+  (if (null? l)
+      0
+      (+ (first l) (soma (rest l)))))
+
+; verifica se um átomo é membro de uma lista
+(define (membro? a l)
+  (cond
+    [(null? l) #f]
+    [(eq? a (first l)) #t]
+    [else (membro? a (rest l))]))
+
+; substitui a por n em uma lista
+(define (substitui a n lista)
+  (cond
+    [(null? lista) '()] ; se a lista estiver vazia retorna vazia
+    [(eq? a (first lista)) (cons n (substitui a n (rest lista)))]
+    [else     (cons (first lista) (substitui a n (rest lista)))]))
+
