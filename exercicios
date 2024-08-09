@@ -16,6 +16,11 @@
 ; (if cond
 ;   expr_then
 ;   expr_else)
+; map aplica a função proc a todos os elementos da(s) lista(s).
+;(map (lambda (number)
+;(+ 1 number))
+;'(1 2 3 4))
+
 
 ; soma dois números
 (define (soma l)
@@ -72,5 +77,10 @@
 (define (inverte l)
   (inverte-AC l '())
 )
-
+;cria uma lista de i até n i é um parametro opcional que por defult é 1.
+(define (listar n #:i [i 1]) 
+  (if (<= n 0) 
+    '() 
+  (cons i (listar (- n 1) #:i (+ i 1)))
+))
 
