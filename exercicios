@@ -30,10 +30,47 @@
     [(eq? a (first l)) #t]
     [else (membro? a (rest l))]))
 
+; verifica se um elemento é membro de uma lista de genérica
+(define (membro*? a l)
+  (cond
+    [(null? l) #f]
+    [(list? (first l)) (or (membro*? a (first l))
+                           (membro*? a (rest l)))]
+    [(eq? a (first l)) #t]
+    [else (membro*? a (rest l))]
+  ))
+
+(define (membro2? a l [ls #t])
+  (if ls
+      (membro? a l)
+      (membro*? a l)))
+
 ; substitui a por n em uma lista
 (define (substitui a n lista)
   (cond
     [(null? lista) '()] ; se a lista estiver vazia retorna vazia
     [(eq? a (first lista)) (cons n (substitui a n (rest lista)))]
     [else     (cons (first lista) (substitui a n (rest lista)))]))
+
+; insere elemento (new) a direita de elemento (old)
+(define (insere-dir new old l)
+  (cond
+    [(null? l) '()]
+    [(eq? (first l) old)
+      (cons old (cons new (insere-dir new old (rest l))))]
+    [else (cons (first l)
+      (insere-dir new old (rest l)))])
+  ))
+
+; inverte uma lista
+(define (inverte-AC l a)
+  (if (null? l)
+      a
+      (inverte-AC (rest l) (cons (first l) a))
+  ))
+
+(define (inverte l)
+  (inverte-AC l '())
+)
+
 
