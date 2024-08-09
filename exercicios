@@ -84,3 +84,9 @@
   (cons i (listar (- n 1) #:i (+ i 1)))
 ))
 
+;cria lista de LISTAS osdenada ex (Cria-ll '(1 2 3)) = '((1) (2 3) (4 5 6))
+(define (cria-ll l i) 
+  (if (null? l) 
+  '() 
+  (cons (lista(first l) i) 
+        (cria-ll(rest l) (+ i (first l))))))
