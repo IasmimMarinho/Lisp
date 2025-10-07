@@ -1,0 +1,63 @@
+; Iasmim Marinho
+
+; Q1 - dobro de um numero
+(define dobro
+  (lambda (x)
+    (* 2 x)))
+
+; Q2 - media2 
+(define media2
+  (lambda (n1 n2)
+    (/ (+ n1 n2) 2 )))
+
+; Q3 - verifica se numero é par
+(define e-par
+  (lambda (n)
+    (if (even? n)
+	#t
+	#f))) 
+
+; Q4 - Concatena 2 strings
+(define concatena
+ (lambda (s1 s2)
+	(string-append s1 s2)))
+
+; Q5 - potencia
+(define potencia 
+ (lambda (base expoente)
+   (expt base expoente)))
+
+; Q6 - triplo de um numero
+(define triplo
+  (lambda (x)
+    (* 3 x)))
+
+; Q7 - maior numero
+(define maior
+  (lambda (x1 x2)
+    (max x1 x2)))
+
+; Q8 - valor absoluto
+(define absoluto
+  (lambda (x)
+    (abs x)))
+
+; Q9 - quadrado da soma
+(define quadrado-soma
+  (lambda (x1 x2)
+    (expt (+ x1 x2) 2)))
+
+; Q10 - diferença absoluta
+(define diferenca-abs
+  (lambda (n1 n2)
+    (abs (- n1 n2))))
+
+; Q11 - divisão inteira
+(define divisao-inteira
+  (lambda (n1 n2)
+    (quotient n1 n2 )))
+
+; Q12 - resto da divisao
+(define resto-divisao
+  (lambda (n1 n2)
+    (remainder n1 n2 )))
