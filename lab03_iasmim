@@ -1,0 +1,38 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname lab03_iasmim) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+; Q1
+(define (conta-ocorrencias a l)
+  (cond
+    [(null? l) 0]
+    [(equal? a (first l)) (+ 1 (conta-ocorrencias a (rest l)))]
+    [else (conta-ocorrencias a (rest l))]))
+
+;Q2
+
+(define (soma-elementos l)
+  (if (null? l)
+      0
+    (+ (first l) (soma-elementos (rest l)))))
+
+;Q3
+
+(define (produto-elementos l)
+  (if (null? l)
+      1
+    (* (first l) (produto-elementos (rest l)))))
+
+;Q4
+(define (conta-pares l)
+  (cond
+    [(null? l) 0]
+    [(even? (first l)) (+ 1 (conta-pares (rest l)))]
+    [else (conta-pares (rest l))]))
+
+;Q5
+(define (soma-impares l)
+  (cond
+    [(null? l) 0]
+    [(not (even? (first l)))
+     (+ (first l) (soma-impares (rest l)))]
+    [else (soma-impares (rest l))]))
