@@ -1,0 +1,92 @@
+;Q1
+
+(define (soma-impares lst)
+  (define (aux lst ac)
+    (cond
+      [(null? lst) ac]                                  
+      [(odd? (first lst)) (aux (rest lst) (+ ac (first lst)))]
+      [else (aux (rest lst) ac)]))                        
+  (aux lst 0))
+
+;Q2
+
+(define (produto-elementos lst)
+  (define (aux lst ac)
+    (cond
+      [(null? lst) ac]                                  
+      [else (aux (rest lst) (* ac (first lst)))]))                        
+  (aux lst 1))
+ 
+;Q3
+
+(define (substitui* old new lst)
+  (cond 
+   [(null? lst) '()]
+   [(list? (first lst))
+    (cons (substitui* old new (first lst))
+    	  (substitui* old new (rest lst)))]
+   [(eqv? old (first lst))
+    (cons new 
+	(substitui* old new (rest lst)))]
+   [else
+    (cons (first lst)
+	(substitui* old new (rest lst)))]
+))
+  
+
+;Q4
+
+(define (inverte* lg)
+  (inv-aux* lg '()))
+
+(define (inv-aux* lg lga)
+  (cond
+    [(null? lg) lga]
+    [(list? (first lg))
+     (inv-aux* (rest lg) (cons (inv-aux* (first lg) '()) lga))]
+    [else
+     (inv-aux* (rest lg) (cons (first lg) lga))]
+    ))
+
+;Q5
+
+(let ([a 3]
+      [b 4])
+  (+ a (* a b)))
+
+; => 15
+
+;Q6
+(let* ([a 5]
+       [b (+ a 2)]
+       [c (* b 3)])
+  (list a b c))
+; 1 => '(5 7 21)
+; 2 => Ao trocar para let, a resposta é a: undefined pois o a ainda não foi definido
+
+;Q7
+
+(define (rmembro* a lg)
+  (rest (r-uma-aux a lg)))
+  
+(define (r-uma-aux a lg)
+  (cond
+    [(null? lg) (list #f)]
+    [(list? (first lg))
+       (let [(resp (r-uma-aux a (first lg)))]
+         (if (first resp)
+             (cons #t
+                   (cons (rest resp)
+                         (rest lg)))
+             (let [(resp2 (r-uma-aux a (rest lg)))]
+               (cons (first resp2)
+                     (cons (first lg)
+                           (rest resp2))))))]
+    [(eqv? a (first lg))
+       (cons #t (rest lg))]
+    [else
+       (let [(resp2 (r-uma-aux a (rest lg)))]
+               (cons (first resp2)
+                     (cons (first lg)
+                           (rest resp2))))]
+    ))
