@@ -1,0 +1,75 @@
+Iasmim da Cruz Marinho
+Lista 2
+1.	
+	a)(atom? ‘banana)	#t
+	b)(atom? 34)		#t
+	c)(atom? #f)		#f
+	d)(atom? ‘())		#t
+	e)(atom? ‘(a b c))	#f
+
+2.	
+	a)(atom? 'a)	#t
+	b)(atom? '(a))	#f
+	c)(atom? '())	#t
+	d)(atom? 100)	#t
+	e)(atom? #t)	#f
+
+3.	
+	a)(pair? '(a b))	#t
+	b)(pair? '(a))		#t
+	c)(pair? 'a)		#f
+	d)(pair? '())		#f
+	e)(pair? (cons 'a 'b))	#t
+
+4.	(cons 5 (cons 10 '()))
+5.	(cons  5  10)
+6.	(cons 1 (cons 2 (cons 3 (cons 4 '()))))
+7.	(cons (cons 1 (cons 2 '())) (cons 3 (cons 4 '())))
+8.	(cons  (cons 1  2) (cons  (cons 3 4) '()))
+
+9.	
+	a)	(cons 'a (cons 'b (cons 'c '())))
+	b)	(cons 1 (cons  (cons 2  (cons 3 '() )) '() ))
+	c)	(cons 'x '() )
+
+10.	(cons '(1 2 3) '(4 5 6))
+
+11.	(cons '(1 2 3) '((4 5 6)))
+
+12.	(reverse '(1 2 3 4)) ; '(4 3 2 1)
+
+13. 	(map reverse (reverse '((1 2) (3 4) (5 6))))
+
+14.	
+	f) '(1 2 3)
+	g) '((4 5 6) (7 (8 9)) 10)
+	h) '(4 5 6)
+	i) 5
+	j) '(7 (8 9))
+	k) '(8 9)
+	l) 2
+	m) 10
+
+15. 
+	a) '((1 2) 3)
+	b) '(((4 5) 6)))
+	c) '(1 2)
+	d) '(4 5)
+	e) 6
+
+16. Qual o valor de (first '(x y z))?
+	R: 'x
+
+17. Qual o valor de (rest '(x y z))?
+	R: '(y z)
+
+18. Qual o valor de (first (rest '(x y z)))?
+	R: 'y
+
+19. Qual o valor de (rest (rest '(x y z)))?
+	R: '(z)
+
+20. 
+	a) #f
+	b) #t
+	c) #t
