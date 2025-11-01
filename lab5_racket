@@ -1,0 +1,72 @@
+#lang racket
+(require 2htdp/image)
+(require rackunit)
+
+(define (cadastrar-tarefa 
+	titulo 
+	descricao
+	#:status [s "pendente"])
+(string-append titulo " " descricao " "  s))
+
+;(cadastrar-tarefa "Tara de PF" "escrever código" #:status "em andamento")
+;(cadastrar-tarefa "Tara de PF" "escrever código")
+
+(define (cadastrar-produto
+	nome 
+	#:preco [valor 0.0]
+	#:categoria [cat "Não espeficicada"])
+(string-append nome ", " (number->string valor) ", "  cat))
+
+;(cadastrar-produto "pão" #:preco "1.0")
+;(cadastrar-produto "pão" #:preco 1.0 #:categoria "alimento")
+
+
+(define (criar-imagem)
+  (let (
+        [circulo-vermelho (circle 50 "solid" "red")]
+        [retangulo-azul (rectangle 100 50 "solid" "blue")]
+       )
+    (beside circulo-vermelho retangulo-azul)
+  ))
+
+;(criar-imagem)
+
+
+(define (mult a b)
+  (* a b))
+
+(check-equal? (mult 1 2) 2)
+(check-equal? (mult 3 4) 12)
+;(check-equal? (mult 3 3) 10)
+
+
+(define (validar-id id)
+  (cond
+    ; Não é uma string
+    [(not (string? id))
+     (error "ID inválido: Esperava uma string com pelo menos 5 caracteres, mas recebi o valor: ~v" id)]
+    
+    ; É uma string, mas tem menos de 5 caracteres
+    [(< (string-length id) 5)
+     (error "ID inválido: Esperava uma string com pelo menos 5 caracteres, mas recebi ~a"
+            (string-length id))]
+
+    ; O id é válido
+    [else id]))
+
+
+; Fazer testes de Verificação
+
+
+; Teste 1:Quando o id for uma string com 4 caracteres, o código deve levantar uma exceção.
+(check-exn
+  exn:fail?
+  (lambda () (validar-id "1234")))
+
+; Teste 2: Quando o id for uma string com exatamente 5 caracteres, deve retornar o id corretamente
+(check-equal? (validar-id "abcde") "abcde")
+
+;Quando o id for um valor não string (por exemplo, um número), o código deve levantar uma exceção.
+(check-exn
+  exn:fail?
+  (lambda () (validar-id 10)))
